@@ -2,21 +2,22 @@ import './style/ExpensesList.css'
 import ExpenseItems from "./ExpenseItems.jsx";
 
 const ExpensesList = (props) => {
-    let expensesContent = <p>No expenses found.</p>;
 
-    if (props.items.length > 0) {
-        return <h1></h1>
+    if (props.items.length === 0) {
+        return <h2 className='expenses-list__fallback'>Found No Expenses</h2>
     }
+
     return(
         <ul className="expenses-list">
-            expensesContent = filteredExpenses.map((expense) => (
+            {props.items.map((expense) => (
             <ExpenseItems
                 key={expense.id}
                 title={expense.title}
                 price={expense.price}
                 date={expense.date}
             />
-            ));
+            ))}
         </ul>
     )
 }
+export default ExpensesList
